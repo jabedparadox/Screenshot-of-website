@@ -1,0 +1,162 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+body {
+  font-family: Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  ont-size: 15px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+<style>
+a:link, a:visited {
+  background-color: DodgerBlue;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: DodgerBlue;
+}
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #6e6e6e;
+   color: white;
+   text-align: center;
+}
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+</style>
+</head>
+<body style=" background-color: black; ">
+
+
+
+<p style=" text-align: center;font-size: x-large;color: white;margin-top: 50px;">Website Screen Capture </p>
+
+<form style="margin:auto;max-width:300px">
+  <button style="margin-left: 110px;margin-bottom: 5px;" formaction="/">Home</button>
+</form>
+
+
+<form method="post" class="example" action="/page" style="margin:auto;max-width:300px">
+  <input style=" border-radius: 10px; " type="text" placeholder="eg: https://google.com .." name="img_url" pattern="^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$"required>
+  <button  style=" border-radius: 10px; " type="submit"><i class="fa fa-search"></i></button>
+</form>
+
+
+
+<form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+   {% if error is defined and erroe|length > 0 %}
+      <p style=" text-align: center;border: 5px solid #555;color: white;background-color: black;">{{error}}</p>
+   {% endif %}
+   <p style=" text-align: center;border: 5px solid #555;color: white;background-color: black;">Image Preview</p>
+   <p style=" text-align: center;word-break: break-word;color: white;">Image name: {{image_nm}}</p>
+   <a style=" width: -webkit-fill-available; border: 5px solid #555;" href="{{image}}" download>
+   <img src="{{image}}" style=" width: -webkit-fill-available; border: 5px solid #555;">
+   </a>
+</form>
+
+<div class="example" style="margin:auto;max-width:300px">
+ <p style=" text-align: center;border: 5px solid #555;color: white;background-color: black;">Click on the image to download it:</p>
+</div>
+
+<div class="w3review" style="margin:auto;max-width:300px">
+ <p style=" text-align: center;border: 5px solid #555;color: white;background-color: black;">embed url</p>
+ <textarea style="margin:auto;max-width:300px" id="w3review" name="w3review" rows="4" cols="50">{{embeded_html}}</textarea>
+</div>
+
+<div class="footer">
+  <p>Website Screen Capture</p>
+</div>
+
+<script type="text/javascript">
+const trigger = $('.trigger');
+const wrapper = $('#wrapper');
+const url = '';
+
+
+trigger.on('click', () => {
+	$.ajax({
+  	url,
+	  xhrFields:{
+  	  responseType: 'blob'
+	  },
+  	success (data) {
+	    const url = window.URL || window.webkitURL;
+  	  const src = url.createObjectURL(data);
+    	wrapper.attr('src', src);
+	  }
+	});
+});
+</script>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+</body>
+</html> 

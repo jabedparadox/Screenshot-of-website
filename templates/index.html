@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+body {
+  font-family: Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+<style>
+a:link, a:visited {
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: red;
+}
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #6e6e6e;
+   color: white;
+   text-align: center;
+}
+</style>
+</head>
+<body style=" background-color: black; ">
+
+
+
+<p href="/" style=" text-align: center;font-size: x-large;color: white;margin-top: 50px;">Website Screen Capture</p>
+
+<form style="margin:auto;max-width:300px">
+  <button style="margin-left: 110px;margin-bottom: 5px;" formaction="/">Home</button>
+</form>
+
+
+<form method="post" class="example" action="/page" style="margin:auto;max-width:300px">
+  <input style=" border-radius: 10px; " type="text" placeholder="eg: https://google.com .." name="img_url" pattern="^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$"required>
+  <button  style=" border-radius: 10px; " type="submit"><i class="fa fa-search"></i></button>
+</form>
+
+
+
+
+<!--<form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+  
+  <a style="margin-top: 50px;background-color: #2196F3;margin-left: 139px;" href="#" class="trigger">Trigger</a>
+  <img src="" id="wrapper" />
+
+</form> -->
+<div class="footer">
+  <p>Website Screen Capture</p>
+</div>
+<script type="text/javascript">
+const trigger = $('.trigger');
+const wrapper = $('#wrapper');
+const url = '';
+
+
+trigger.on('click', () => {
+	$.ajax({
+  	url,
+	  xhrFields:{
+  	  responseType: 'blob'
+	  },
+  	success (data) {
+	    const url = window.URL || window.webkitURL;
+  	  const src = url.createObjectURL(data);
+    	wrapper.attr('src', src);
+	  }
+	});
+});
+</script>
+</body>
+</html>
